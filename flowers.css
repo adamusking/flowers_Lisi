@@ -1,0 +1,218 @@
+:root{
+    --cream:#fdf6f3;
+    --blush:#f7d9df;
+    --pink:#e8a0b4;
+    --deep-pink:#c96b8a;
+    --lavender:#d9c9e8;
+    --deep-lavender:#9c7bb5;
+    --leaf:#a8c3a0;
+    --text:#5c3d52;
+  }
+
+  * { 
+  box-sizing:border-box;
+    }   
+
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse at top, var(--blush) 0%, transparent 60%),
+      linear-gradient(180deg, var(--cream) 0%, #fbeef0 50%, #f7e6ed 100%);
+    font-family: 'Georgia', 'Iowan Old Style', serif;
+    color: var(--text);
+    overflow-x:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap: 3.5vh;
+    padding: 4vh 20px;
+    position:relative;
+  }
+
+  /* floating hearts */
+  .heart{
+    position:fixed;
+    bottom:-10%;
+    font-size: 18px;
+    color: var(--pink);
+    opacity:0.55;
+    animation: floatUp linear infinite;
+    pointer-events:none;
+    user-select:none;
+    z-index:1;
+  }
+
+  @keyframes floatUp{
+    0%{ transform: translateY(0) translateX(0) rotate(0deg); opacity:0; }
+    10%{ opacity:0.6; }
+    90%{ opacity:0.5; }
+    100%{ transform: translateY(-110vh) translateX(var(--drift,20px)) rotate(360deg); opacity:0; }
+  }
+
+  /* header */
+  .headline{
+    text-align:center;
+    z-index:2;
+  }
+
+  .headline h1{
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight:400;
+    letter-spacing: 1px;
+    margin:0;
+    color: var(--deep-pink);
+    font-style: italic;
+    animation: gentlePulse 4s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(232,160,180,0.5);
+  }
+
+  @keyframes gentlePulse{
+    0%,100%{ transform: scale(1); }
+    50%{ transform: scale(1.035); }
+  }
+
+  .headline p{
+    margin-top: 10px;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: var(--deep-lavender);
+    font-style: normal;
+  }
+
+  /* flower garden */
+  .garden{
+    position:relative;
+    width:100%;
+    max-width: 620px;
+    height: 210px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    z-index:2;
+  }
+
+  /* one plant = stem + leaf + flower, all children of a single swaying unit */
+  .plant{
+    position:absolute;
+    bottom:0;
+    width:4px;
+    transform-origin: bottom center;
+    animation: sway var(--dur, 5s) ease-in-out infinite;
+  }
+
+  @keyframes sway{
+    0%,100%{ transform: rotate(-3deg); }
+    50%{ transform: rotate(3deg); }
+  }
+
+  .stem{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:4px;
+    height:100%;
+    background: linear-gradient(180deg, var(--leaf), #7fa374);
+    border-radius:4px;
+  }
+
+  .flower{
+    position:absolute;
+    bottom:100%;
+    left:50%;
+    transform: translateX(-50%) scale(0);
+    animation: bloom 1.8s ease-out forwards;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes bloom{
+    0%{ transform: translateX(-50%) scale(0) rotate(0deg); }
+    70%{ transform: translateX(-50%) scale(1.15) rotate(5deg); }
+    100%{ transform: translateX(-50%) scale(1) rotate(0deg); }
+  }
+
+  .petal{
+    position:absolute;
+    width:22px;
+    height:32px;
+    border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;
+    left:50%;
+    top:50%;
+    transform-origin: center bottom;
+  }
+
+  .leaf{
+    position:absolute;
+    width:16px;
+    height:26px;
+    background: linear-gradient(160deg, var(--leaf), #6e9463);
+    border-radius: 0 100% 0 100%;
+  }
+
+  .center{
+    position:absolute;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background: radial-gradient(circle, #fff3c4, #e8b84b);
+    box-shadow: 0 0 8px rgba(232,184,75,0.6);
+  }
+
+  /* footer / timer */
+  .footer{
+    text-align:center;
+    z-index:2;
+  }
+
+  .footer p.label{
+    font-size: 1rem;
+    letter-spacing:2px;
+    color: var(--deep-lavender);
+    margin-bottom: 14px;
+  }
+
+  .timer{
+    display:flex;
+    gap: 18px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .unit{
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(201,107,138,0.25);
+    border-radius: 14px;
+    padding: 14px 18px;
+    min-width: 76px;
+  }
+
+  .unit .num{
+    font-size: 1.7rem;
+    color: var(--deep-pink);
+    display:block;
+    font-family: Georgia, serif;
+  }
+
+  .unit .unit-label{
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    color: var(--deep-lavender);
+    text-transform: lowercase;
+  }
+
+  .note{
+    margin-top:22px;
+    font-size:0.95rem;
+    font-style: italic;
+    color: var(--text);
+    opacity:0.75;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; }
+  }
