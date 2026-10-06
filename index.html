@@ -1,31 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Love Of My Life</title>
-  <link rel="stylesheet" href="flowers.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>For Love Of My Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="flowers.css">
 </head>
-<body>
+<body class="locked">
+<div class="orb o1"></div><div class="orb o2"></div>
 
-<div class="headline">
-  <h1>I love you Lisi</h1>
-  <p>and every flower here knows it</p>
-</div>
-
-<div class="garden" id="garden"></div>
-
-<div class="footer">
-  <p class="label">since August 3rd</p>
-  <div class="timer" id="timer">
-    <div class="unit"><span class="num" id="d">0</span><span class="unit-label">days</span></div>
-    <div class="unit"><span class="num" id="h">0</span><span class="unit-label">hours</span></div>
-    <div class="unit"><span class="num" id="m">0</span><span class="unit-label">min</span></div>
-    <div class="unit"><span class="num" id="s">0</span><span class="unit-label">sec</span></div>
+<div id="gate">
+  <div>
+    <h1>Hi, Lisi <span class="beat">♥</span></h1>
+    <p class="sub">This place is only for you. Enter our secret code.</p>
+    <input id="code" type="tel" inputmode="numeric" maxlength="4" placeholder="••••" autocomplete="off" aria-label="Secret code">
+    <p id="hint"></p>
+    <button class="btn" id="enter">Open</button>
   </div>
 </div>
 
-<script src="flowers.js"></script>
+<main>
+<section class="hero">
+  <svg class="bigheart" viewBox="0 0 100 90" aria-hidden="true"><path d="M50 82 C14 54 6 36 14 20 C24 4 44 8 50 26 C56 8 76 4 86 20 C94 36 86 54 50 82Z"/></svg>
+  <h1>I love you Lisi</h1>
+  <p class="sub">and every flower here knows it</p>
+  <p class="since">since August 3rd</p>
+  <div class="clock" id="clock"></div>
+  <p class="tap">Tap anywhere. Something happens.</p>
+  <a class="down" href="#story">Walk through our story</a>
+</section>
 
+<section id="story">
+  <h2>Our story</h2>
+  <p class="sub">The moments I keep going back to.</p>
+  <div class="line">
+    <article><time>August 3rd</time><p>The day it began. I didn't know it yet, but my life quietly split into before you and after you. I remember how easy it felt, like I'd known you much longer than I had. Something in me just said: this one matters.</p></article>
+    <article><time>The evening at the port</time><p>I was nervous and trying very hard to look calm. I was so scared that you were going to kiss me that I kept looking away, at the water, at the boats, at anything but you, because my heart was beating so loud I was sure you could hear it. You probably noticed, and I think you liked it a little. Every time I glanced back, you were smiling, and every worry I had got a bit quieter. Then we went to your room and watched The Martian. Honestly, I barely remember the movie. I remember sitting next to you, how warm and comfortable it felt, and how I kept thinking: I don't want this evening to end. Somewhere between the port and that movie, I knew I wanted a hundred more nights exactly like this one, as long as they were with you.</p></article>
+    <article><time>The little everyday moments</time><p>It's not only the big days I keep going back to. It's the small ones. Laughing at something silly until we can't stop, talking about nothing for hours, the quiet when we're just together and it feels like enough. You turn the most ordinary moments into my favorite ones. And if today feels heavy, I want you to know that the sadness doesn't change a single thing about how wonderful you are. I'm still here, I'm still yours, and I'd happily sit beside you through every cloudy day until the sun comes back. It always does, and I'll be right there when it does.</p></article>
+    <article><time>Today</time><p>You're the first person I think of when I wake up and the last one before I fall asleep. You've become my favorite part of every day, and I'm so grateful it's you.</p></article>
+  </div>
+</section>
+
+<section id="meter">
+  <h2>How much do I love you?</h2>
+  <p class="sub">Drag the slider and find out.</p>
+  <div class="meter">
+    <input id="lv" type="range" min="0" max="100" value="0" aria-label="Love meter">
+    <p id="lt">Go on, slide it.</p>
+  </div>
+</section>
+
+<section id="reasons">
+  <h2>Fifty reasons</h2>
+  <p class="sub">Each flower keeps one. Open them slowly.</p>
+  <div class="bar"><i id="bar"></i></div>
+  <div class="count" id="count"></div>
+  <button class="ghost" id="pick">Open one for me</button>
+  <div class="garden" id="garden"></div>
+  <div class="end" id="end"><h3>That's fifty, and I'm not done.</h3></div>
+</section>
+
+<section id="catch">
+  <h2>Catch my heart</h2>
+  <p class="sub">Tap 10 hearts before they float away and I'll tell you a secret.</p>
+  <div id="arena"></div>
+  <p id="score">Caught: 0 / 10</p>
+  <button class="ghost" id="start">Start</button>
+</section>
+
+<section id="when">
+  <h2>Open when</h2>
+  <p class="sub">Little letters for the days you need them.</p>
+  <details><summary>Open when you miss me</summary><p>Close your eyes for a second. I'm right there with you, I promise. Probably making a terrible joke, definitely wishing I could squeeze you tight. Missing you just means we found something worth missing. Soon enough I'll be back beside you, and until then, keep a little piece of my heart in your pocket. It's yours anyway.</p></details>
+  <details><summary>Open when you're sad</summary><p>Come here. Imagine my arms around you, my chin on your head, nothing to fix and nothing to say. You don't have to be strong right now. It's okay to feel it all. This will pass, and I'll be here the whole time, holding your hand through it. You're not alone, not today and not ever.</p></details>
+  <details><summary>Open when you doubt yourself</summary><p>Listen to me, because I see you clearly. You are kind, brave, funny and so much stronger than you think. The person you doubt is the person I admire most. If you can't believe in yourself right now, borrow my belief. I have more than enough for both of us.</p></details>
+  <details><summary>Open when you can't sleep</summary><p>Take a slow breath in, and let it out. Let your shoulders drop. Whatever is spinning in your head can wait until morning, it'll still be there and so will I. Think of something soft and warm. Think of me sending you the biggest hug. Goodnight, my love. Sleep well, and dream of something beautiful.</p></details>
+</section>
+
+<section id="letter">
+  <h2>One last thing</h2>
+  <div class="letter"><div id="lt2"></div><div class="sign" id="sg">Adam</div></div>
+  <div class="ask">
+    <h2>Will you be mine forever?</h2>
+    <div class="row"><button class="btn" id="yesb">Yes ♥</button><button id="no">No</button></div>
+  </div>
+</section>
+<footer>Made by hand, for Lisi.</footer>
+</main>
+
+<div class="veil" id="veil" role="dialog" aria-modal="true">
+  <div class="card"><small id="cn"></small><p id="ct"></p><button class="btn" id="cx">Keep it close</button></div>
+</div>
+<div class="yes" id="yes"><div><h1>She said yes.</h1><p class="sub" style="font-size:24px;margin:10px 0">Forever starts now, my love. I'm yours, completely, today and every day after.</p><button class="ghost" id="yx">Close</button></div></div>
+
+<script src="flowers.js"></script>
 </body>
 </html>
